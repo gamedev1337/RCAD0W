@@ -1,0 +1,19 @@
+|Dll scan|
+
+https://www.virustotal.com/en/file/f60de977aee7742d7b2cbe8eb4921cf3244ac4cc6bf5372c3d689dc49307ca50/analysis/
+
+
+HASH
+
+SHA256:	f60de977aee7742d7b2cbe8eb4921cf3244ac4cc6bf5372c3d689dc49307ca50
+
+
+|Lua Scan|
+
+https://www.virustotal.com/en/file/713e4d6833ac649f8d4ec7caee00cd0adf53e80852544d320e94aecff21320c1/analysis/1443210123/
+
+
+
+HASH
+
+SHA256:	713e4d6833ac649f8d4ec7caee00cd0adf53e80852544d320e94aecff21320c1
