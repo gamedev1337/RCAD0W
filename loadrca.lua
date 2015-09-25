@@ -1,6 +1,7 @@
 --variables--
 local Rae = LocalPlayer() //Player.
 local ply = LocalPlayer() //Player.
+local Vehicle = LocalPlayer():GetVehicle()
 local gogogo = nil
 local champ = {}
 local KEY_LALT = KEY_B
