@@ -1,2 +1,7 @@
+0.5.0
+Server exploits
+NoClip Added
+Godmode Fixes
+
 0.4.7
 Release
